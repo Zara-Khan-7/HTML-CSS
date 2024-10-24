@@ -1,0 +1,21 @@
+body    {
+    background-color: rgb(155, 228, 203);
+}
+
+h1  {
+    font-size: 40pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    color: rgb(1, 19, 19);
+}
+
+ol  {
+    font-style: normal;
+}
+
+li  {
+    font-size: 30pt;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(9, 46, 46);
+}
