@@ -1,0 +1,117 @@
+body    {
+    font-family: 'Times New Roman';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header  {
+    font-family:'Times New Roman';
+    background-color: rgb(59, 7, 35);
+    color: rgb(244, 240, 242);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: rgb(244, 240, 242);
+    text-decoration: none;
+}
+
+.hero {
+    background-image: url(img/logo2.avif);
+    background-size: cover;
+    color: rgb(59, 7, 35);
+    font-size: 20;
+    margin-top: 0;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    border: 2px solid rgb(244, 239, 239);
+    display: inline-block;
+    background-color:rgb(59, 7, 35) ;
+    color: rgb(244, 239, 239);
+}
+
+
+.hero button {
+    background-color: rgb(59, 7, 35);
+    color:rgb(244, 239, 239) ;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-family: 'Times New Roman';
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.menu  {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.menu h2 {
+    font-family: 'Times New Roman';
+    font-size: 2rem;
+    margin-bottom: 30px;
+    border: 2px solid rgb(244, 239, 239) ;
+    background-color:rgb(59, 7, 35);
+    color: rgb(244, 239, 239);
+}
+
+.menu .menu-items{
+    display: inline-block;
+    width: 30%;
+    margin: 0 1%;
+    text-align: center;
+}
+
+.menu .menu-items img {
+    width:400px;
+    height: 400px;
+    border-radius: 10px;
+}
+
+.menu .menu-items h3 {
+    color: rgb(59, 7, 35);
+    margin: 15px 0 10px;
+}
+
+.menu .menu-items p {
+    color: rgb(59, 7, 35);
+    margin: 0 0 10px;
+}
+
+.menu .menu-items span {
+    font-size: 1.2rem;
+    color: rgb(59, 7, 35);
+    text-decoration: solid;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 50px;
+}
