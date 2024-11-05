@@ -1,0 +1,384 @@
+/* Import a font from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap');
+
+/* Define root-level CSS variables for colors */
+:root {
+	--body-bg-color: #e0e5ec;
+	/* Background color for the body */
+	--bg-color: #e0e5ec;
+	/* Background color for elements */
+	--primary-font-color: rgba(144, 152, 168, 1);
+	/* Primary font color */
+	--secondary-font-color: rgba(51, 64, 89, 1);
+	/* Secondary font color */
+	--soft-high-light: rgba(255, 255, 255, .43);
+	/* Soft highlight color */
+	--dark-high-light: rgba(217, 210, 200, .51);
+	/* Dark highlight color */
+}
+
+/* Dark theme styles when data-theme="dark" attribute is set */
+[data-theme="dark"] {
+	--bg-color: #131419;
+	/* Dark background color */
+	--primary-font-color: #c7c7c7;
+	/* Dark theme primary font color */
+	--secondary-font-color: #03a9f4;
+	/* Dark theme secondary font color */
+	--soft-high-light: rgba(255, 255, 255, .05);
+	/* Dark theme soft highlight color */
+	--dark-high-light: rgba(0, 0, 0, .51);
+	/* Dark theme dark highlight color */
+}
+
+/* Apply box-sizing to all elements in the document */
+* {
+	box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+	overflow: hidden;
+	/* Hide overflow to prevent scrolling */
+	background: var(--body-bg-color);
+	/* Set body background color */
+	color: var(--primary-font-color);
+	/* Set primary font color */
+}
+
+/* Styles for the calculator container */
+.calculator {
+	background: var(--bg-color);
+	/* Set background color for the calculator */
+	color: var(--primary-font-color);
+	/* Set primary font color for the calculator */
+}
+
+/* Styles for the calculator display */
+.display {
+	/* Apply a neumorphic box shadow for the calculator display */
+	box-shadow: 6px 6px 16px 0 var(--dark-high-light), -6px -6px 16px 0 var(--soft-high-light),
+		inset 6px 6px 5px 0 var(--dark-high-light), inset -6px -6px 5px 0 var(--soft-high-light);
+	border: 5px solid var(--soft-high-light);
+	/* Add a border to the display */
+	color: var(--secondary-font-color);
+	/* Set secondary font color for the display */
+}
+
+/* Styles for elements with class .neumorphic */
+.neumorphic {
+	box-shadow: 6px 6px 16px 0 var(--dark-high-light), -6px -6px 16px 0 var(--soft-high-light);
+	border-radius: 50%;
+	/* Apply a circular border-radius */
+	transition: 0.1s all ease-in-out;
+	/* Add a smooth transition effect */
+	border: 1px solid var(--soft-high-light);
+	/* Add a border */
+}
+
+/* Styles for .neumorphic on hover */
+.neumorphic:hover {
+	box-shadow: inset 6px 6px 5px 0 var(--dark-high-light), inset -6px -6px 5px 0 var(--soft-high-light);
+	color: var(--secondary-font-color);
+	/* Change the font color on hover */
+}
+
+/* GRID LAYOUT & NON NEUMORPHIC */
+
+/* Styles for the body element using CSS Grid */
+body {
+	display: grid;
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	justify-items: center;
+	font-family: 'Odibee Sans';
+	/* Set the font-family */
+	font-size: 16px;
+	/* Set the base font size */
+}
+
+/* Styles for the calculator display */
+.display {
+	border-radius: 12px;
+	/* Apply a border-radius to the display */
+	transition: 0.1s all ease-in-out;
+	/* Add a smooth transition effect */
+	height: 60px;
+	line-height: 60px;
+	text-align: right;
+	padding-right: 20px;
+	width: 100%;
+	font-size: 32px;
+	/* Set the font size for the display */
+	letter-spacing: 4px;
+	/* Add letter spacing */
+}
+
+/* Styles for the calculator container */
+.calculator {
+	box-shadow: 0 0 16px rgba(0, 0, 0, .1);
+	/* Apply a box shadow to the calculator */
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-areas: "toggle toggle toggle toggle" "display display display display" "c signed percent divide" "seven eight nine times" "four five six minus" "one two three plus" "zero zero decimal equals";
+	align-items: center;
+	justify-items: center;
+	grid-row-gap: 25px;
+	grid-column-gap: 25px;
+	border-radius: 20px;
+	/* Apply a border-radius to the calculator */
+	padding: 50px 40px 40px 40px;
+	/* Add padding to the calculator */
+}
+
+
+/* Styles for the calculator buttons */
+
+/* Common styles for buttons */
+.c,
+.signed,
+.percent,
+.divide,
+.seven,
+.eight,
+.nine,
+.times,
+.four,
+.five,
+.six,
+.minus,
+.one,
+.two,
+.three,
+.plus,
+.zero,
+.decimal,
+.equals {
+	cursor: pointer;
+	/* Set the cursor to a pointer on hover */
+	text-align: center;
+	/* Center-align text within the button */
+	height: 60px;
+	/* Set button height */
+	width: 60px;
+	/* Set button width */
+	line-height: 60px;
+	/* Center text vertically */
+}
+
+/* Special style for the zero button to make it wider */
+.zero {
+	width: 100%;
+	/* Set the width to 100% for the zero button */
+	border-radius: 12px;
+	/* Apply a border-radius to the zero button */
+}
+
+/* Assign grid areas to specific calculator buttons */
+
+.toggle {
+	grid-area: toggle;
+	/* Assign grid area to the toggle button */
+}
+
+.display {
+	grid-area: display;
+	/* Assign grid area to the display */
+}
+
+.c {
+	grid-area: c;
+	/* Assign grid area to the 'C' button */
+}
+
+.signed {
+	grid-area: signed;
+	/* Assign grid area to the '+/-' button */
+}
+
+.percent {
+	grid-area: percent;
+	/* Assign grid area to the '%' button */
+}
+
+.divide {
+	grid-area: divide;
+	/* Assign grid area to the '/' button */
+}
+
+.seven {
+	grid-area: seven;
+	/* Assign grid area to the '7' button */
+}
+
+.eight {
+	grid-area: eight;
+	/* Assign grid area to the '8' button */
+}
+
+.nine {
+	grid-area: nine;
+	/* Assign grid area to the '9' button */
+}
+
+.times {
+	grid-area: times;
+	/* Assign grid area to the '*' button */
+}
+
+.four {
+	grid-area: four;
+	/* Assign grid area to the '4' button */
+}
+
+.five {
+	grid-area: five;
+	/* Assign grid area to the '5' button */
+}
+
+.six {
+	grid-area: six;
+	/* Assign grid area to the '6' button */
+}
+
+.minus {
+	grid-area: minus;
+	/* Assign grid area to the '-' button */
+}
+
+.one {
+	grid-area: one;
+	/* Assign grid area to the '1' button */
+}
+
+.two {
+	grid-area: two;
+	/* Assign grid area to the '2' button */
+}
+
+.three {
+	grid-area: three;
+	/* Assign grid area to the '3' button */
+}
+
+.plus {
+	grid-area: plus;
+	/* Assign grid area to the '+' button */
+}
+
+.zero {
+	grid-area: zero;
+	/* Assign grid area to the '0' button */
+}
+
+.decimal {
+	grid-area: decimal;
+	/* Assign grid area to the decimal button */
+}
+
+.equals {
+	grid-area: equals;
+	/* Assign grid area to the '=' button */
+}
+
+/* Additional styles for the .toggle button */
+.toggle {
+	width: 100%;
+	/* Set the width to 100% for the .toggle button */
+}
+
+
+/* Styles for the theme switch wrapper */
+.theme-switch-wrapper {
+	display: block;
+	/* Display as a block element */
+	float: right;
+	/* Float the element to the right */
+	align-items: center;
+	/* Center-align child elements vertically */
+}
+
+/* Styles for the theme switch container */
+.theme-switch {
+	display: inline-block;
+	/* Display as an inline-block element */
+	height: 34px;
+	/* Set the height of the theme switch container */
+	position: relative;
+	/* Set the position to relative for child elements */
+	width: 60px;
+	/* Set the width of the theme switch container */
+}
+
+/* Styles for the input element inside the theme switch */
+.theme-switch input {
+	display: none;
+	/* Hide the input element */
+}
+
+/* Styles for the slider control */
+.slider {
+	box-shadow: 6px 6px 16px 0 var(--dark-high-light), -6px -6px 16px 0 var(--soft-high-light),
+		inset 6px 6px 5px 0 var(--dark-high-light), inset -6px -6px 5px 0 var(--soft-high-light);
+	background-color: inherit;
+	/* Inherit background color */
+	bottom: 0;
+	cursor: pointer;
+	/* Change cursor to pointer on hover */
+	left: 0;
+	position: absolute;
+	/* Position absolutely within the theme switch container */
+	right: 0;
+	top: 0;
+	transition: 0.4s;
+	/* Add a transition effect */
+	border: 2px solid rgba(255, 255, 255, .2);
+	/* Add a border */
+}
+
+/* Styles for the slider's appearance before user interaction */
+.slider:before {
+	background-color: var(--bg-color);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+	bottom: 4px;
+	content: "";
+	height: 22px;
+	left: 4px;
+	position: absolute;
+	/* Position absolutely within the slider */
+	transition: 0.4s;
+	/* Add a transition effect */
+	width: 22px;
+}
+
+/* Styles for the slider when the input is checked (i.e., dark theme) */
+input:checked+.slider {
+	background-color: var(--bg-color);
+	box-shadow: 6px 6px 16px 0 var(--dark-high-light), -6px -6px 16px 0 var(--soft-high-light),
+		inset 6px 6px 5px 0 var(--dark-high-light), inset -6px -6px 5px 0 var(--soft-high-light);
+}
+
+/* Styles for the slider's appearance when input is checked (i.e., dark theme) */
+input:checked+.slider:before {
+	background-color: var(--secondary-font-color);
+}
+
+/* Styles for the slider's appearance when input is checked (i.e., dark theme) */
+input:checked+.slider:before {
+	transform: translateX(26px);
+	/* Move the slider knob to the right */
+}
+
+/* Additional styles for a round slider */
+.slider.round {
+	border-radius: 34px;
+	/* Apply a border-radius to create a round slider */
+}
+
+/* Additional styles for a round slider's appearance before user interaction */
+.slider.round:before {
+	border-radius: 50%;
+	/* Apply a border-radius to the slider knob */
+}
