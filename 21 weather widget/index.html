@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App ⛅</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+    <body>
+
+    <main class="main-container">
+        <header class="input-container">
+            <input class="city-input" placeholder="Search City" type="text">
+            <button class="search-btn">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAABEFJREFUWEftl39oG2UYx7/PXaKTdeulrRuDjYmILj/scpfNiaCoKChDREEYKGz+QgXFFZyMOUG0iCC6ioLi5ihT5pwwBXUy/xDRP0aZyaWhd/1n6mBlzk1zl1oxbZJ75L1LapPa3t221Am+/4X73uf5vs9zz/u8IVxkiy4yP/hvGlKS6TQTZchBnIAVAGIALAZ+BmCSRN9bI7nChcj2vBnqvHb9leTUngI46ReMQDqR/FZx5NhJP+18z+c01BlXb5MIfUyIBg1AoEmJqf83MzsU9J1W3T8aiiW0G5n4+YaYgBpAn4NpmNk5aVd+P61EOlaQJK1icJqINjJYaujZkbaXRrO5czE1y9DiVGp51Im+C8JldeApSa7tLBYKY3MFUNakryCZXmagx9UwSlSWHrF+zJbCmpplSEloL4D4Bg/MY1SW+4KAl1yd6YlEnDeYcLlngg7bRm7gvAz19K67plqrveniGNWodMmDZ0aGfgkKFU0gObW3GUwEYtmhLb+OZkUnBl5NGYql1CeYcU/d0CHL1N8JTKoLYwltBxPfLH5KLO0umtmPwzCaDCmJ9F4QrXRhwNaioZthYEKrxNWbIGGnuylQ3jJyz4ZhtBjSPgHxYgHoWLro7rGjR/8MAxPaZakNy6d46n0vy3TGMnMPhGE0lyyhHmZCRABsQ78DgBMG5mozmahSdr6oZ2jSMnJ3hWE0G0qqBxjoEgAHU5vGDaMYBia0S9Zc1y3LlQ/rhn6yjNxjYRjNJUtqAwAnPEP83LiRPxYGJrRdce16R+IX643xtWXqr4RhtJRMu5+JN3sA+tI2crvCwIQ2llC3M+FWtzGY9hTN3MEwjCZDXan1qxyuvldPN5McfbhYGJrzhG4N5A3jqntUEKNSuRRbJnT97DkbcneY0rYx8+11yClEeaudz9t+0I7e3mXRmjwwPT7A+20jP+j3XuvzWaPD+yiruwHuqItPS3Jtx3yzbGlSu0oG+hnsNgSBitbk+GYcPz553oYEoDuR2VAj56UGzJv2/BmAYXZoTEz7zkWdK8G8moBeAu4U42JG8O+UPzpfPXHim/IFMSQgSjJzC7GzrXEuBQETaIqZfwAhDtAEMQ5FaPLTs4YxEeR9L7vzLCWuriaiJ5l4rR9QjAnZoV3laKUWrcqDjY2ISxsYH1lm7gM/hq+hBsC9UwPriClOJO7U1F2f6CJYgZmP2KP6t9P6ePppSLRxpgGCNGgZ2f1+ptryr8PruMi+mbdI7yigfX6Zaosh9xtMqA+BsKk1Iww+WDLye+bKVNsMiYQoSbUPgBjSTYuZvyqZ+dfcy27Laqcht0qxuPYMS9MH7d/hGUdsU3+91VS7DbkGYgn1cSbcO6tMDvpnNkPgLvPrjCDPu5Laow74vmkt44Bt6nsXumRN8Rof+ny3gAUp2UxXSlJdaxv68L/RZUEqOUuz4Bnyc/m/Ib8M/QUfII80FDp15gAAAABJRU5ErkJggg=="/>
+            </button>
+        </header>
+
+        <section class="weather-info" style="display: none;">
+            <div class="location-date-container">
+                <div class="location">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAABNxJREFUWEfdl39oVWUYx7/Pe2+bLbedO70zJE3IHLvvWjv3IpalWJR/RFGI/XAx1AIpkSGBZmE/QKOQReEmCAYJyxkEIllSEWRIk1n33jZ3rmmzf7So3HbONnM/73ninHvuvI17z71n84/R+ety3uf5vp/3+XXeS5hlD80yHvw/gOZXPVCaFP+sghArmbEQxPPsSDP1gfh3YrT7aez0VU275jUDniI0t7a20p/01xPzWib43TYjxjgDXyUnxNGhi9HeQsEKBlKq1dVE2JUPZOrGBBoVTHv7EtGOQqAKAqqoDj9rCn7xv4KkMZvtfp/vnDBHrlhrJhUvYhP3mOBVIFRl2hPRfr079kU+qLxAiow8BJivTQoxLvsENfV1x867iZfJuuU+pu1MCFp2BOIkkm8Map1nXVPttji/Sl2Y9OEQE26xRRmXfMmSnb0XfhjKd1JrvUzeXyF4tAnEd6SKHtdpRGzUf4sO5PJ3jZAi1TcBPOg4/yFGixr7ezoGM8WUGrUBjAb7HaHV6I63Zq6XLovM9/v5ABMHHKgTRiLe7BkoEIosZjI/Sjsmk+a2oV86L04Vygdk2c8LRVYkydyTYkYSw+K5XFHKGaGAjNQzzE2pU1G7kYi9ne1UhQBZfgEZbmHwMuu3AL3fr8W+zqaXE0iR4Q8Alikn8a6hRb+bCVC5VNcTsMWOEtH3enfsHU9AgVC4lYkXWE7JcVGfHm52RDIfE/eCUOvURxcEOjOX0zVVVl13txB0wElbj67Ft3oDkuETDC62nIxg+WM4dWrC+q1I9ZtcBZntvaHF11rvg1LOHUfRsZQNXTO02DpvQCH1y3S7zy2b8+SVM2eGZwK0MBIpuT5iHk9FiEZ1LfaENyCpfspAhV1BvqIX+rs67Gk83ZQp1eqdEDhkAzGu6on4856AlJDalK4NE+buXBO20C6rqKlbaTLZnUqMqJ6I35j+GWQ5u6xChreY4PVOzk8aWuzDmXRZoDq8gwU/6ui1GVrssKcIlVdHwiTM9yaLMFj2TLqwM4UKipCURQqKPgNwq10CwPZ+LZ7wBIQ1a/yBvwePpEd+rq91IUBKTXgdmF9yAP40tPhG+8uW5XH9lgWkuoGBzc7s6NOD5Q3ZouQ6BpYuLVaKSz8BUO7YtRha/PNcPq5AS5asmWPcNnAEQGlKgNsM7eesuc+1QUDWbWXQU6lipr/0yrLNbofKex8K1IQfZ+ZGZ36wzycae7t+uuAaFWdRkXV1AO1L2xLTHj0RO+3mmxfIOlhAhvcz2L4BWjPE9E1sGzh3TncTrqxZsWDMHGsBpVJFoLO6Ftud7yCFACEol98+zhMHQShxxH/VRwdfQU/PaLYNnKm8H8Bip/56MSxedruYTUYxH3F63b6SQuxlcPoQHYYWty5wU7tFKCF1X3qoWv8+TCEaB7qjlwrZq6AIpYWmXvaJcUxPxA9mbGSldweDH/FSN5mgnoAsx0BItf4KPXxDhE4a2l3NkAmfgqJXAay6EX5xWNeibYVExnPKMkSFItXXAazOEOlhRjEIiybtmI4aidjHXmCcevPqYtk/7VNkz1sA7svqPU2YGQDZGKSEwptAvCEDaphNNA+cj387nWPOFMje0+o+wbSTgDES/l393T9eni7MTQGayebZfD132c0GmKo364D+BcVi9jSXuhh4AAAAAElFTkSuQmCC"/>
+                    <h4 class="country-txt">Jakarta</h4>
+                </div>
+                <h5 class="current-date-txt regular-txt">Wed, 09 Oct</h5>
+            </div>
+
+            <div class="weather-summary-container">
+                <img src="assets/weather/clouds.svg" class="weather-summary-img">
+                <div class="weather-summary-info">
+                    <h1 class="temp-txt">28°C</h1>
+                    <h3 class="condition-txt regular-txt">Haze</h3>
+                </div>
+            </div>
+
+            <div class="weather-conditions-container">
+                <div class="condition-item">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAABHpJREFUWEftl29sE3UYx7/Ptd0Ym+t1AZYgMajosrvS7K4jixjNfIXEEIMRJSREQFEjIggGXxgjkYigoMYXiNFsmBgwLi5GExNfaDSKCyS9zrK7glkmmAXDHLurTMa29h7TP9cVs7W91hfEeO96ff58fs/f3xFusIduMB7894ACQTXEzLsAYoFTh8aMn/Vqol5VhAKysh6gzQzO2CEQ22x/mDD6eyqFqhgoIKvbGPzgbI4FUM+Yrn1QCVQlQCTK6k6AVxc4/J0YXiYsdN4Ro9c0okfdQrkFIlFWngdwf94x6Dz77D2pazUej2f6IIBbqoFyBSS2tu2AQA/kT82I+2jqpT90fTz9bqEsNyRRe4DBd87I0AnL0LrLjVTZQAFZXcPg7QUwZxv+nPfi8HDfRKGz5lCofirlfYPBd8xESnjVNCI/lgNVFlCgNRSE4D1c0E3n6xtrdwz3XQ/jOFzQcvdNSe/EuwDfnOu+STuZfC5xLvZrKajSQOGwLzDB3Uy8KGd8LDlNz175JTJazPiiYEfzFE+/B3BDTu6CpUefBMDF9EoCBeS2DQza5MwZgbDz8oAWL3XS9P/+oNJOjP351Nn8jhnv/6pioEb5riYPJj9icG3aSCXzRZSU3SCsykAwEvPrhMcuRiJX54IqGiG/3PYEgR7JRIdpxKyjzYhEpsuJjiOzOByef/Uaf5xPHdFRa0DrrQSIREn5FAR/DmifaWg/uIFxZAs7lBhDphF92jVQo9y2QgC9lq0djJp6dEMlMBmdzk6vOJL4DIS6zG8bW6149MJs9uZMmSgp20FYk1Wi45auHasYCEBhLRGEY6YeOe4KKCAp+5nQnsGxU7vMeGygGqCApN7DxC9n049vTSN6wBWQKKldIF6SVqqhmo0jA6cuVQPkX77iNrKTmWVLwKCpR59xBRSQ1S+ddrf0ZauBnlQ1QEuXds6z6hNf5Np/wjKis15d5q4hWe11WrXWk1p7KRb7qxqg9OKdRk2u3Wnc0rWHXEVIlNq6QJRJmTeJTaPnoherAWoKdSyxU1NdORvpNbLVHZCs7APQkVZixsGEEf2mKiBZXWWDd2dTRj9ZhrbXFZBfVh4mIL0MQUTfmwNaZiZV+oiSuhfEKzP6Nh+x4v2fuwNqCd1KXs/7uTZNJm3fxitnT1+uBGhBi7I45aVu5/oieFJbxmKxYVdAaeGApLzOhHAWir4zDS2/uV2AkSipr+SjUyRduZEwt+lGWV0mgI/kJRifWEbUKcxymARRUrY5E5+AFFh4yjQiv82lXPI+JErKFhDWOwYIdBoT9KY5FEkUI6oPBpt97NsDYLkjJ4AOj+na18X0SgIB6zyiNPgWCK0zhmhcYDoBr7dvLHbqulrwB8O3U8peSQI9yuAat9EtAwhA5hprPw6itU5hlpOvbE2QTcDbpSIzk4FyLQNokhXJZn7BGZilVNM7yxaShxJnzgyVkq0IKKu0zuNvHbyPBNxLjHYmeAudEWgSzCcBOmkaWvrTp+il/p+g5aWs3OP9C3L/A5UK4t8Khqk0O12SHwAAAABJRU5ErkJggg=="/>
+                    <div class="condition-info">
+                        <h5 class="regular-txt">Humidity</h5>
+                        <h5 class="humidity-value-txt">55%</h5>
+                    </div>
+                </div>
+
+                <div class="condition-item">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAA69JREFUWEftmE1oFEkUx9+rHhXBOD2JUQ9BVNDNZGLMzIBf7EEFd2FXUfAgKkFykAX3InjxAzUnMYiKUVBXT+pJEVkQ3BVWg4qK63THODUxOWQvRlcTZ7o1B5OZrifdmY6TMJnu+dII1qmnq7rer97/vVdVgzDJGk4yHvi2gXz1oQYQ4ldCXGN6Fgn6EfFSnCu3AYBK4W3XHqoMhH4WQHuyGiV4MQWH9/dzPlgslCsg7w8NC9Ajnc9pjPChFlNavgiQ7A82AYOmtEy9QMYZmsZeUgo3I8EWG8Ij2I6BrsjrYqBceajSH1ohJFpkGjKSxpMP3Z3dtlG5LtQCSKvSsCcTMfXWGKDVqz3eN9oalHCu+Z4M+l+fI9+F9vZUNnBXQLlW7AuEfiegjeYYRngxHlOu2uO9/sZ1DNlOQpIz50DAOKE4p0U72sfPXRRQRe2yKklKXQCgGRaQwEPxLuWx+Sz7w5uAiV25FsMAT8S58tdY2Ixfcn3QihM3DQm9BGSmf4U1nkDXcHg7cD5c2bC8hozkRQJidh8QPbCeGf4IAF5LYsChVBKbP/REBmybYzwkB4JmPSmsIR2xJfDVBfcSwtp0XPUKKbVPf/48Yf4e8WqyFQDmWf0INxJR9WwJgbCPBJ7WuyKKPakcCF63PUcp4ze9u/O/zFVWLQnXGkK0jbzDPo0rzdmB8pDMUknAKz2m3gUAkWkwU3otql4ZX8VralZOH/R+/NOWLcGVDVmBCtMq/6+q6kN+g+jUCBAMJLi67asBzQgGqz1D1AqINemAv6nF1LR8FuDnlk+W5e8XS9jZgGAWUSszEXA4OZWaB1W1v4RBXRCa9REDPB7nyt+ZM5Qu7fPgMuMGCM8mYsr98Z99Wcms1GQvNb7wHsA1I9saito68nCK66GTG2iiLNOi6uXRKpxn8WSEb+PVM/+Z6LiRO4Ym2Ms0rv40ClTAfoeEbwwUbe95x79O2rnKsmKBbAgCPKpz5U4uKFdZVqhkWY8o09k2iESSE0GVPagrFodneTziFCFUmxAC6EAu6coOZEL4Ao27CHCTVYaILuixjmtl91BVXXi5wcRi05CHSU8GOp+OXgR8daFjhLTU2r8Q2xJR5WbZgXyB4FYCsA5aSNiLYJwWU7Fv/FVJSormdz3P+soOJNc2zgcJ/3BI60caVw+7zjKnGuHU7/M3/kIMd2cfh3wKDB10um6XPKi9/nAImVgPAObtwmyvCPCSzhXzqOv4h0TJgZy86NT/HcjJQ58AuEtpNCT7kBgAAAAASUVORK5CYII="/>
+                    <div class="condition-info">
+                        <h5 class="regular-txt">Wind Speed</h5>
+                        <h5 class="wind-value-txt">2 M/s</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-items-container">
+                <div class="forecast-item">
+                    <h5 class="forecast-item-date regular-txt">9 Oct</h5>
+                    <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
+                    <h5 class="forecast-item-temp">29°C </h5>
+                </div>
+                <div class="forecast-item">
+                    <h5 class="forecast-item-date regular-txt">9 Oct</h5>
+                    <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
+                    <h5 class="forecast-item-temp">29°C </h5>
+                </div>
+                <div class="forecast-item">
+                    <h5 class="forecast-item-date regular-txt">9 Oct</h5>
+                    <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
+                    <h5 class="forecast-item-temp">29°C </h5>
+                </div>
+                <div class="forecast-item">
+                    <h5 class="forecast-item-date regular-txt">9 Oct</h5>
+                    <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
+                    <h5 class="forecast-item-temp">29°C </h5>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-city section-message">
+            <img src="assets/message/search-city.png">
+             <div>
+                <h1>Search City</h1>
+                <h4 class="regular-txt">Find out the weather conditions of the city</h4>
+             </div>
+        </section>
+
+        <section class="not-found section-message" style="display: none;">
+            <img src="assets/message/not-found.png">
+             <div>
+                <h1>Search City</h1>
+                <h4 class="regular-txt">Find out the weather conditions of the city</h4>
+             </div>
+        </section>
+    </main>
+    
+</body>
+</html>
